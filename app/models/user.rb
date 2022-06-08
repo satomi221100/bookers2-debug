@@ -7,6 +7,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :books, dependent: :destroy
+  has_many :favorites, dependent: :destroy
+  has_many :book_comments, dependent: :destroy
+  # has_many :xxx, class_name: "モデル名", foreign_key: "○○_id", dependent: :destroy
+  #has_many :yyy, through: :xxx, source: :zzz
   validates :name, uniqueness: true, presence: true, length: { minimum: 2, maximum: 20 }
   validates :introduction, length: {maximum: 50 }
    def get_profile_image(width,height)
